@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Treatment O&M Services | STP, ETP, WTP</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-blue: #0077b6;
+            --dark-blue: #023e8a;
+            --light-blue: #caf0f8;
+            --teal: #2a9d8f;
+            --text-dark: #333333;
+            --text-light: #555555;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--teal);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--teal);
+            color: var(--white) !important;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #21867a;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(2, 62, 138, 0.85), rgba(0, 119, 182, 0.85)), url('water.jpg') center/cover fixed;
+            color: var(--white);
+            padding: 180px 20px 120px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            max-width: 900px;
+            margin: 0 auto 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+
+        .plant-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .plant-tags span {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid var(--light-blue);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Common Section Styles */
+        section {
+            padding: 25px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--dark-blue);
+            margin-bottom: 50px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--teal);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Flex Layout for Image & Text */
+        .content-split {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .content-split.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .split-text {
+            flex: 1;
+        }
+
+        .split-text h2 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .split-text p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .split-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .split-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: block;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--teal);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .experience-badge h3 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        /* Grid Layouts */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        /* Feature Cards */
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid var(--white);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--primary-blue);
+        }
+
+        .card i {
+            font-size: 35px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Outstanding Features Section */
+        .features-section {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 60px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            margin: 40px auto;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-item i {
+            font-size: 24px;
+            color: var(--teal);
+            background: var(--light-blue);
+            padding: 15px;
+            border-radius: 50%;
+            height: 54px;
+            width: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-item h4 {
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Industries */
+        .industries {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            max-width: 100%;
+        }
+
+        .industries .section-title {
+            color: var(--white);
+        }
+
+        .industries .section-title::after {
+            background-color: var(--light-blue);
+        }
+
+        .industries-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .industry-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: background 0.3s;
+        }
+
+        .industry-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .industry-item i {
+            font-size: 24px;
+            color: var(--light-blue);
+        }
+
+        /* Clients Section */
+        .clients-section {
+            background-color: var(--white);
+            padding: 80px 20px;
+        }
+
+        .clients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .client-card {
+            background: var(--bg-light);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            flex: 1;
+            min-width: 180px;
+            max-width: 220px;
+            border: 1px solid #e1e1e1;
+            transition: transform 0.3s;
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--teal);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .client-card i {
+            font-size: 40px;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        .client-card h4 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            text-transform: capitalize;
+        }
+
+        /* Footer & Contact */
+        footer {
+            background-color: #111;
+            color: var(--white);
+            text-align: center;
+            padding: 60px 20px 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+        }
+
+        .contact-item i {
+            color: var(--teal);
+            font-size: 1.4rem;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--light-blue);
+        }
+
+        .footer-copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .content-split, .content-split.reverse {
+                flex-direction: column;
+            }
+            .experience-badge {
+                bottom: 10px;
+                left: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; } /* Add hamburger menu for mobile */
+            .logo { font-size: 20px; }
+            .features-section { padding: 30px 20px; }
+            .contact-info { gap: 20px; flex-direction: column; align-items: center; }
+            .contact-item { width: 100%; max-width: 350px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <nav class="nav-container">
+            <a href="#" class="logo">
+            <img src="EnviroxLogo.jpg" style="height: 50px;"/>
+            Envirox water systems
+
+        </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Services</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#contact" class="btn">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Advanced Operation & Maintenance of Water Plants</h1>
+        <p>Ensuring smooth, efficient, and sustainable performance for all types of water treatment facilities. We maximize plant efficiency and maintain strict regulatory compliance.</p>
+        
+        <div class="plant-tags">
+            <span>STP</span>
+            <span>ETP</span>
+            <span>WTP</span>
+            <span>CETP</span>
+            <span>DM Plants</span>
+            <span>RO Systems</span>
+            <span>ZLD Plants</span>
+        </div>
+
+        <a href="#about" class="btn" style="padding: 15px 35px; font-size: 1.1rem;">Discover Our Expertise</a>
+    </section>
+
+    <!-- About / O&M Details Section -->
+    <section id="about">
+        <div class="content-split">
+            <div class="split-image">
+                <img src="banner.jpg" alt="Water Treatment Plant Engineers">
+                <div class="experience-badge">
+                    <h3>5+ Years</h3>
+                    <p>of Expertise</p>
+                </div>
+            </div>
+            <div class="split-text">
+                <h2>Operation & Maintenance of STP, ETP, WTP Plants</h2>
+                <p>As a reliable partner for your water management needs, we are dedicated to providing an <strong>all-inclusive O&M service</strong> for different types of water and wastewater treatment plants, including ETP, STP, WTP, DM, and RO systems.</p>
+                <p>Our responsible crew continuously monitors your plants, performing preventive maintenance and offering rapid emergency support to guarantee smooth, uninterrupted operations. We provide <strong>constant operation management, round-the-clock (24/7)</strong>, to accelerate plant processes and minimize downtime.</p>
+                <p>With over a decade of expertise, our adaptable contracts deliver highly economical and energy-saving services for industrial, commercial, and institutional sectors. We strictly adhere to the guidelines set by the <strong>Maharashtra Pollution Control Board (MPCB)</strong> and the <strong>Central Pollution Control Board (CPCB)</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outstanding Features & Benefits Section -->
+    <section id="features" style="background-color: var(--bg-light);">
+        <h2 class="section-title">Outstanding Features & Benefits</h2>
+        
+        <div class="features-section">
+            <div class="content-split reverse">
+                <!-- <div class="split-image">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Water Plant Automation and Piping">
+                </div> -->
+                
+                <div class="split-text">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <div>
+                            <h4>Expert Operations Team</h4>
+                            <p>Highly skilled operators dedicated to ensuring smooth and optimal plant performance.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <div>
+                            <h4>Preventive Maintenance</h4>
+                            <p>Proactive servicing that drastically reduces downtime and extends equipment life.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="fa-solid fa-leaf"></i>
+                        <div>
+                            <h4>Energy Efficiency</h4>
+                            <p>Optimized plant operations designed to reduce power consumption and chemical costs.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="fa-solid fa-headset"></i>
+                        <div>
+                            <h4>24/7 Support</h4>
+                            <p>Round-the-clock monitoring, rapid emergency response, and continuous system management.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="fa-solid fa-network-wired"></i>
+                        <div>
+                            <h4>Automation Integration</h4>
+                            <p>Embracing cutting-edge technology with SCADA, PLC, and HMI-based monitoring tools.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <div>
+                            <h4>Regulatory Compliance</h4>
+                            <p>Full adherence and documentation support for MPCB and CPCB environmental guidelines.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Programs Section -->
+    <section id="programs">
+        <h2 class="section-title">Our Specialized O&M Programs</h2>
+        <div class="grid-4">
+            
+            <div class="card">
+                <i class="fa-solid fa-desktop"></i>
+                <h3>Plant Operation & Monitoring</h3>
+                <p>Daily operations, process control, sludge management, and performance tracking using advanced SCADA tools.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-toolbox"></i>
+                <h3>Maintenance & Support</h3>
+                <p>Comprehensive preventive servicing, breakdown maintenance, calibration, and spare part inventory management.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-flask"></i>
+                <h3>Resource Optimization</h3>
+                <p>Chemical supply, automated dosage control, inventory tracking, and highly cost-effective, energy-saving solutions.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-file-shield"></i>
+                <h3>Compliance & Reporting</h3>
+                <p>Regulatory documentation, laboratory testing, pollution control reporting, and complete MPCB/CPCB audit support.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Industries We Serve -->
+    <section id="industries" class="industries">
+        <h2 class="section-title">Adaptable to All Sectors</h2>
+        <div class="industries-grid">
+            <div class="industry-item"><i class="fa-solid fa-industry"></i><h3>Industrial Sectors</h3></div>
+            <div class="industry-item"><i class="fa-solid fa-building-columns"></i><h3>Institutional Sectors</h3></div>
+            <div class="industry-item"><i class="fa-solid fa-building"></i><h3>Residential Complexes</h3></div>
+            <div class="industry-item"><i class="fa-solid fa-warehouse"></i><h3>Warehouses & Plants</h3></div>
+            <div class="industry-item"><i class="fa-solid fa-laptop-code"></i><h3>IT Parks & Commercial</h3></div>
+            <div class="industry-item"><i class="fa-solid fa-hospital"></i><h3>Healthcare Facilities</h3></div>
+        </div>
+    </section>
+
+    <!-- Clients We Serve Section -->
+    <section id="clients" class="clients-section">
+        <h2 class="section-title">Clients We Serve</h2>
+        <div class="clients-grid">
+            <div class="client-card">
+                <i class="fa-solid fa-hospital"></i>
+                <h4>K.J. Somaiya Hospital & Research Center</h4>
+            </div>
+            
+            <div class="client-card">
+                <i class="fa-solid fa-water"></i>
+                <h4>Shangrila Resort and Waterpark</h4>
+            </div>
+            
+            <div class="client-card">
+                <i class="fa-solid fa-warehouse"></i>
+                <h4>Global Warehouse</h4>
+            </div>
+            
+            <div class="client-card">
+                <i class="fa-solid fa-hospital"></i>
+                <h4>Santulan Ayurveda</h4>
+            </div>
+            
+            <div class="client-card">
+                <i class="fa-solid fa-hotel"></i>
+                <h4>Fern Ecotel</h4>
+            </div>
+
+ 	    <div class="client-card">
+                <i class="fa-solid fa-briefcase-medical"></i>
+                <h4>Zenzi Pharmaceutical Industries</h4>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer & Contact Us -->
+    <footer id="contact">
+        <h2 style="margin-bottom: 15px;">Ready to optimize your water treatment facility?</h2>
+        <p style="opacity: 0.8; max-width: 700px; margin: 0 auto;">A partnership with us means smooth problem-solving and sustained efficiency over time. Get in touch with our experts today to discuss your customized, cost-effective O&M contract.</p>
+        
+        <!-- Contact Details -->
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+919870744653">+91-9870744653</a>
+            </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:envirox9@gmail.com">envirox9@gmail.com</a>
+            </div>
+        </div>
+        
+        <p class="footer-copyright">&copy; 2026 Envirox water systems. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
